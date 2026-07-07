@@ -116,6 +116,10 @@ export class RouteDockClient {
       _secrets.set(this, config.commitmentSecret)
     }
 
+    if (config.commitmentSecret) {
+      _secrets.set(this, config.commitmentSecret)
+    }
+
     const secretKey = this.keypair.secret()
     this.x402 = new X402Client(secretKey, this.network, this.retryPolicy)
     this.charge = new MppChargeClient(this.keypair, this.network, this.retryPolicy)
