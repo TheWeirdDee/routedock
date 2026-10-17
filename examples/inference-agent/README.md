@@ -44,6 +44,14 @@ Sends prompts to a mock inference provider and pays per request using the **MPP 
    - **Provider (`PROVIDER_SECRET`, receiver)**: needs testnet XLM and the USDC trustline.
 
    > **Note:** `client.pay()` sends a `GET` request with no body, so a paid route must accept `GET` and read its input from the URL query string.
+3. Add a USDC trustline and get testnet USDC. Replace `<AGENT_KEY>` with a Stellar CLI signing-key alias for `AGENT_SECRET`; use that key's public address for Friendbot and Circle:
+
+   ```bash
+   stellar tx new --source <AGENT_KEY> --network testnet \
+     change-trust --asset USDC:GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5 --limit 100
+   ```
+
+   Then open [Circle's testnet faucet](https://faucet.circle.com/), select **Stellar Testnet**, paste the same public key, and request testnet USDC.
 
 4. Copy the env file:
 
